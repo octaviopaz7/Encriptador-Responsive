@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+  <title>Encriptador</title>
+</head>
+  <body>
+      <header>
+          <img class="logo" src="imagenes/logo.jpg" alt="logo de Alura">
+      </header>
+      <main>
+        <section class="campo-cifrado">
+            <textarea  id="texto-cifrado" class="text-area"  cols="35" rows="10" placeholder=" Ingrese el texto aquí" oninput="eliminarBG(),lowerCase()" required></textarea>
+            <div>
+                <p class="info">Solo letras minúsculas y sin acentos</p>
+            </div>
+            <div class="caja-botones">
+                <button class="btnEncriptar" onclick="btnEncriptar()">Encriptar</button>
+                <button class="btnDesencriptar" onclick="btnDesencriptar()">Desencriptar</button>
+            </div>
+        </section>
+
+        <section class="campo-descifrado">
+            <textarea  id="texto-descifrado"  class="resultado" readonly></textarea>
+            <div class="conteiner-btncopiar">
+                <button class="btnCopiar" onclick="copiarTexto()" >Copiar</button>
+            </div>
+        </section>
+      </main>
+
+  </body>
+  <script src="app.js"></script>
+</html>
+
