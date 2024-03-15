@@ -19,7 +19,6 @@ function actualizarEstadoBotones() {
   }
 }
 
-
 function btnEncriptar() {
   if (texto_cifrado.value.trim() !== "") {
     const texto = encriptar(texto_cifrado.value);
@@ -43,9 +42,10 @@ function btnDesencriptar() {
 function encriptar(fraseEncriptada){
   for (let i = 0; i < matriz_code.length; i++) {
     if (fraseEncriptada.includes(matriz_code[i][0])) {
-      fraseEncriptada = fraseEncriptada.replaceAll(
+        fraseEncriptada = fraseEncriptada.replaceAll(
         matriz_code[i][0],  
-        matriz_code[i][1]
+        matriz_code[i][1],
+        limpiarTextArea()
       )
     }
   }
@@ -55,9 +55,10 @@ function encriptar(fraseEncriptada){
 function desencriptar(fraseDesencriptada){
   for (let i = 0; i < matriz_code.length; i++) {
     if (fraseDesencriptada.includes(matriz_code[i][0])){
-      fraseDesencriptada = fraseDesencriptada.replaceAll(
+        fraseDesencriptada = fraseDesencriptada.replaceAll(
         matriz_code[i][1],
-        matriz_code[i][0]
+        matriz_code[i][0],
+        limpiarTextArea()
       )
     }
   }
@@ -87,21 +88,9 @@ function lowerCase() {
    // Transformar lestras MAYUSCULAS a letras
    texto_cifrado.value = letras.toLowerCase();
 }
- 
-/*
-texto_cifrado.addEventListener("input", actualizarEstadoBotones);
-actualizarEstadoBotones(); /* 
 
+function limpiarTextArea() {
+  const textArea = document.querySelector(".text-area");
+  textArea.value = ""
+}
 
-/*
-function actualizarEstadoBotones() {
-  let btnEncriptar = document.querySelector(".btnEncriptar");
-  let btnDesencriptar = document.querySelector(".btnDesencriptar");
-    if (texto_cifrado.value.trim() !== "") {
-      btnEncriptar.disabled = false;
-      btnDesencriptar.disabled = false;
-    } else {  
-      btnEncriptar.disabled = true;
-      btnDesencriptar.disabled = true;
-    }
-}; */
