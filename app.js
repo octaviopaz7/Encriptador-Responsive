@@ -3,7 +3,7 @@ const texto_descifrado = document.querySelector("#texto-descifrado");
 const textArea = document.querySelector("#texto-descifrado");
 
 const matriz_code = [
-  ["a", "ai"],
+  ["a", "ad"],
   ["e", "enter"],
   ["i", "imes"],
   ["o", "ober"],
