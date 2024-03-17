@@ -1,6 +1,5 @@
 const texto_cifrado = document.querySelector("#texto-cifrado");
 const texto_descifrado = document.querySelector("#texto-descifrado");
-const textArea = document.querySelector("#texto-descifrado");
 
 const matriz_code = [
   ["a", "ad"],
@@ -10,7 +9,7 @@ const matriz_code = [
   ["u", "ufat"],
 ];
 
-function actualizarEstadoBotones() {
+function estadoBotonCopiar() {
   let btnCopiar = document.querySelector(".btnCopiar");
   if (texto_descifrado.value.trim() !== "") {
     btnCopiar.style.display = "block";
@@ -23,7 +22,7 @@ function btnEncriptar() {
   if (texto_cifrado.value.trim() !== "") {
     const texto = encriptar(texto_cifrado.value);
     texto_descifrado.value = texto;
-    actualizarEstadoBotones(); // Actualiza el estado del botón de copiar
+    estadoBotonCopiar(); // Actualiza el estado del botón de copiar
   } else {
     alert("El texto está vacío. Por favor, ingresa un texto antes de encriptar.");
   }
@@ -33,7 +32,7 @@ function btnDesencriptar() {
   if (texto_cifrado.value.trim() !== "") {
     const texto2 = desencriptar(texto_cifrado.value);
     texto_descifrado.value = texto2;
-    actualizarEstadoBotones(); // Actualiza el estado del botón de copiar
+    estadoBotonCopiar(); // Actualiza el estado del botón de copiar
   } else {
     alert("El texto está vacío. Por favor, ingresa un texto antes de desencriptar.");
   }
@@ -69,11 +68,18 @@ function eliminarBG() {
   texto_descifrado.style.backgroundImage = "none";
 };
 
+function reaparecerBG() {
+  texto_descifrado.style.backgroundImage = "url(imagenes/1111.png)";
+};
+
 function copiarTexto() {
   texto_descifrado.select();
   document.execCommand("copy");
   alert("Texto copiado al portapapeles: " + texto_descifrado.value);
-}
+  limpiarResultado();
+  estadoBotonCopiar();
+  reaparecerBG();
+};
 
 function lowerCase() {
   let letras = texto_cifrado.value;
@@ -94,3 +100,7 @@ function limpiarTextArea() {
   textArea.value = ""
 }
 
+function limpiarResultado() {
+  const resultado = document.querySelector(".resultado");
+  resultado.value = ""
+}
